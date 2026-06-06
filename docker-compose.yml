@@ -15,7 +15,7 @@ services:
       - minio_data:/data
 
   airflow:
-    image: apache/airflow:2.8.0
+    build: .
     container_name: airflow
     user: "50000:0"
     depends_on:
@@ -31,14 +31,20 @@ services:
       _AIRFLOW_WWW_USER_CREATE: "true"
       _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_WWW_USER}
       _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_ENDPOINT: minio:9000
     volumes:
       - ./dags:/opt/airflow/dags
       - ./scripts:/opt/airflow/scripts
+      - ./dbt:/opt/airflow/dbt
       - ./airflow/logs:/opt/airflow/logs
       - ./airflow/plugins:/opt/airflow/plugins
       - airflow_db:/opt/airflow
+      - ./dbt_data:/opt/dbt_data
     command: >
       bash -c "airflow webserver & airflow scheduler"
+
   metabase:
     image: metabase/metabase
     container_name: metabase
@@ -46,6 +52,7 @@ services:
       - "3000:3000"
     volumes:
       - metabase_data:/metabase-data
+      - ./dbt_data:/opt/dbt_data
 
 volumes:
   minio_data:

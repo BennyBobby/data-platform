@@ -14,3 +14,6 @@ wheels/
 
 # Airflow logs
 airflow/logs/
+
+# DuckDB output
+dbt_data/

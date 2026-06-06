@@ -1,0 +1,6 @@
+minio
+pandas
+pyarrow
+dbt-core
+dbt-duckdb
+duckdb

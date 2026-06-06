@@ -4,7 +4,7 @@ from io import BytesIO
 from minio import Minio
 
 client = Minio(
-    "localhost:9000",
+    os.environ.get("MINIO_ENDPOINT", "localhost:9000"),
     access_key=os.environ["MINIO_ROOT_USER"],
     secret_key=os.environ["MINIO_ROOT_PASSWORD"],
     secure=False,
