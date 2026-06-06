@@ -2,7 +2,10 @@ from minio import Minio
 import os
 
 client = Minio(
-    "localhost:9000", access_key="minioadmin", secret_key="minioadmin", secure=False
+    "localhost:9000",
+    access_key=os.environ["MINIO_ROOT_USER"],
+    secret_key=os.environ["MINIO_ROOT_PASSWORD"],
+    secure=False,
 )
 
 BUCKET = "bronze"
