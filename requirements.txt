@@ -1,6 +1,7 @@
 minio
 pandas
 pyarrow
+sqlalchemy
+psycopg2-binary
 dbt-core
-dbt-duckdb
-duckdb
+dbt-postgres
