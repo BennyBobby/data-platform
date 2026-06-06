@@ -24,4 +24,9 @@ with DAG(
         bash_command="cd /opt/airflow/dbt/child_mortality && dbt run --profiles-dir /opt/airflow/dbt --log-path /tmp/dbt_logs --target-path /tmp/dbt_target",
     )
 
-    bronze >> silver >> gold
+    test = BashOperator(
+        task_id="dbt_test",
+        bash_command="cd /opt/airflow/dbt/child_mortality && dbt test --profiles-dir /opt/airflow/dbt --log-path /tmp/dbt_logs --target-path /tmp/dbt_target",
+    )
+
+    bronze >> silver >> gold >> test

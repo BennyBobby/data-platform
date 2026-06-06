@@ -3,11 +3,10 @@ name = "data-platform"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "dbt-core>=1.11.11",
-    "dbt-duckdb>=1.10.1",
-    "duckdb>=1.5.3",
+    "dbt-postgres>=1.11.0b1",
     "minio>=7.2.20",
     "pandas>=3.0.3",
     "psycopg2-binary>=2.9.12",

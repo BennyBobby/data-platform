@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: mortality_by_country
+    description: Average under-five mortality rate per country across all years.
+    columns:
+      - name: entity
+        description: Country name
+        tests:
+          - not_null
+          - unique
+      - name: code
+        description: ISO country code
+        tests:
+          - not_null
+      - name: avg_mortality_rate
+        description: Average mortality rate rounded to 2 decimal places
+        tests:
+          - not_null
+      - name: first_year
+        tests:
+          - not_null
+      - name: last_year
+        tests:
+          - not_null
+
+  - name: evolution_by_decade
+    description: Global average under-five mortality rate per decade.
+    columns:
+      - name: decade
+        description: Decade (e.g. 1960, 1970...)
+        tests:
+          - not_null
+          - unique
+      - name: avg_mortality_rate
+        tests:
+          - not_null
+
+  - name: top_countries_improvement
+    description: Top 10 countries with the greatest reduction in mortality rate.
+    columns:
+      - name: entity
+        tests:
+          - not_null
+      - name: improvement
+        description: Difference between first and last mortality rate
+        tests:
+          - not_null

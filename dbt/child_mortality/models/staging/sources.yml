@@ -5,3 +5,13 @@ sources:
     schema: staging
     tables:
       - name: child_mortality
+        columns:
+          - name: entity
+            tests:
+              - not_null
+          - name: year
+            tests:
+              - not_null
+          - name: mortality_rate
+            tests:
+              - not_null

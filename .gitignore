@@ -17,3 +17,6 @@ airflow/logs/
 
 # DuckDB output
 dbt_data/
+
+# dbt logs
+dbt/logs/
