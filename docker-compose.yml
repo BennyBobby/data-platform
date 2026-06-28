@@ -59,7 +59,7 @@ services:
       - ./airflow/plugins:/opt/airflow/plugins
       - airflow_db:/opt/airflow
     command: >
-      bash -c "airflow webserver & airflow scheduler"
+      bash -c "rm -f /opt/airflow/airflow-webserver.pid && airflow webserver & airflow scheduler"
 
   metabase:
     image: metabase/metabase

@@ -46,3 +46,13 @@ models:
         description: Difference between first and last mortality rate
         tests:
           - not_null
+  - name: yearly_global_average
+    description: Global average under-5 mortality rate per year.
+    columns:
+      - name: year
+        tests:
+          - not_null
+          - unique
+      - name: global_avg_mortality
+        tests:
+          - not_null
